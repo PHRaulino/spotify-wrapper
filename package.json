@@ -2,11 +2,15 @@
   "name": "spotify-wrapper",
   "version": "1.0.0",
   "description": "A wrapper to work with the Spotify Web API.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "clear": "rimraf lib",
-    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "clear": "./node_modules/.bin/rimraf lib dist",
+    "build:solo": "./node_modules/.bin/babel --out-dir lib src",
+    "build": "npm run clear && npm run build:solo",
     "build:watch": "npm run build -- --watch",
+    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint && npm run test:coverage",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
@@ -35,9 +39,11 @@
   "license": "MIT",
   "homepage": "https://github.com/PHRaulino/spotify-wrapper.git#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "chai": "^3.5.0",
     "eslint": "^4.0.0",
     "eslint-config-airbnb-base": "^11.2.0",
@@ -45,9 +51,11 @@
     "husky": "^0.11.9",
     "mocha": "^3.2.0",
     "nyc": "^14.1.1",
-    "rimraf": "^2.6.1",
+    "rimraf": "^3.0.0",
     "sinon": "^7.5.0",
-    "sinon-chai": "^3.3.0"
+    "sinon-chai": "^3.3.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.2.3"
   },
   "dependencies": {
     "node-fetch": "^2.6.0"

@@ -1,7 +1,8 @@
-import { searchAlbums } from '../src/main';
+/* eslint-disable no-console */
+import { getAlbumTracks } from '../src/album';
 
 global.fetch = require('node-fetch');
 
-const albums = searchAlbums('Incubus');
+const albumTracks = getAlbumTracks('4aawyAB9vmqN3uQ7FjRGTy');
 
-albums.then(data => data.albums.items.map(item => console.log(item.name)));
+albumTracks.then(data => console.log(data));
