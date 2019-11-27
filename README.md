@@ -1,5 +1,7 @@
 # Spotify Wrapper
 
+[![Build Status](https://travis-ci.com/PHRaulino/spotify-wrapper.svg?token=UzeYu5ypqeH6syLeMDpx&branch=master)](https://travis-ci.com/PHRaulino/spotify-wrapper)
+
 A wrapper to work with the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
 
 ## Getting Started
