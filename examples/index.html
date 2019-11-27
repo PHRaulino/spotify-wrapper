@@ -9,14 +9,16 @@
 </head>
 
 <body>
-  <h1>Listas de Albums do Emicida</h1>
+  <h1>Listas de Albums do <span class="album"></span></h1>
 
   <div id="albums"></div>
 
   <script src="../dist/spotify-wrapper.umd.min.js"></script>
   <script>
-    const albums = spotifyWrapper.searchAlbums('Emicida');
+    const query = 'Emicida'
+    const albums = spotifyWrapper.searchAlbums(query);
     const albumsEl = document.querySelector('#albums');
+    const albumName = document.querySelector('.album');
     albums
       .then(data => {
         markup = data.albums.items.map(item =>
@@ -24,6 +26,7 @@
         ).join('');
 
         albumsEl.innerHTML = markup;
+        albumName.textContent = query
 
       });
   </script>
